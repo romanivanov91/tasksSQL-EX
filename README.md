@@ -137,3 +137,18 @@ from (select name AS ship, displacement, numGuns
      Outcomes as o
      on o.ship=a.ship
 where battle = 'Guadalcanal'</p>
+ 
+ <h4>Задание: 48 (Serge I: 2003-02-16)</h4>
+ <p>Найдите классы кораблей, в которых хотя бы один корабль был потоплен в сражении.</p>
+ 
+ <h4>Решение</h4>
+ <p>select distinct c.class
+from Classes as c
+     left join 
+     Ships as s ON s.class = c.class
+where c.class in (select ship
+                  from Outcomes
+                  where result = 'sunk') or
+      s.name in (select ship
+                  from Outcomes
+  where result = 'sunk')</p>
