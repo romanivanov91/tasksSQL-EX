@@ -119,3 +119,21 @@ select ship
 from Outcomes
 where ship like '% % %'
 </p>
+
+<h4>Задание: 46 (Serge I: 2003-02-14)<h4>
+<p>Для каждого корабля, участвовавшего в сражении при Гвадалканале (Guadalcanal), вывести название, водоизмещение и число орудий.</p>
+ 
+ <h4>Решение:</h4>
+ <p>select o.ship, displacement, numGuns 
+from (select name AS ship, displacement, numGuns
+     from Ships as s 
+     JOIN 
+     Classes as c 
+     on c.class=s.class
+     union
+     select class AS ship, displacement, numGuns
+     from Classes as c) as a
+     right join 
+     Outcomes as o
+     on o.ship=a.ship
+where battle = 'Guadalcanal'</p>
