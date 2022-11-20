@@ -105,3 +105,17 @@ union
 select ship
 from Outcomes
 where ship like 'R%'</p>
+
+<h4>Задание: 45 (Serge I: 2002-12-04)</h4>
+<p>Найдите названия всех кораблей в базе данных, состоящие из трех и более слов (например, King George V).
+Считать, что слова в названиях разделяются единичными пробелами, и нет концевых пробелов.</p>
+
+<h4>Решение</h4>
+<p>select name
+from Ships     
+where name like '% % %'
+union
+select ship
+from Outcomes
+where ship like '% % %'
+</p>
