@@ -84,3 +84,13 @@ from Product as a
       select model, price from Printer) as b on a.model=b.model
   group by maker</p>
 
+<h4>Задание: 43 (qwrqwr: 2011-10-28)</h4>
+<p>Укажите сражения, которые произошли в годы, не совпадающие ни с одним из годов спуска кораблей на воду.</p>
+
+<h4>Решение</h4>
+<p>select name
+from Battles
+where year(date) not in (select launched
+                   from Ships
+                   where launched is not null)</p>
+
