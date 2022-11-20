@@ -94,3 +94,14 @@ where year(date) not in (select launched
                    from Ships
                    where launched is not null)</p>
 
+<h4>Задание: 44 (Serge I: 2002-12-04)</h4>
+<p>Найдите названия всех кораблей в базе данных, начинающихся с буквы R.</p>
+
+<h4>Решение:</h4>
+<p>select name
+from Ships     
+where name like 'R%'
+union
+select ship
+from Outcomes
+where ship like 'R%'</p>
