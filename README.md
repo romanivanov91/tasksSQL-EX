@@ -67,5 +67,20 @@ where o1.result = 'ok'
                    on o2.battle = b2.name and o2.result = 'damaged'
                    where b2.date < b1.date)</p>
 
-
+<h4>Задание: 41 (Serge I: 2019-05-31)<h4>
+<p>Для каждого производителя, у которого присутствуют модели хотя бы в одной из таблиц PC, Laptop или Printer,
+определить максимальную цену на его продукцию.
+Вывод: имя производителя, если среди цен на продукцию данного производителя присутствует NULL, то выводить для этого производителя NULL,
+ иначе максимальную цену.</p>
+ 
+ <h4>Решение:</р4>
+ <p>select maker, case when count(price) = count(*) then max(price) end
+from Product as a
+     inner join 
+     (select model, price from PC
+      union
+      select model, price from Laptop
+      union
+      select model, price from Printer) as b on a.model=b.model
+  group by maker</p>
 
