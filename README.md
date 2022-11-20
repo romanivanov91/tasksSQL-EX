@@ -48,4 +48,24 @@ intersect
 select country 
 from Classes where type = 'bc'
 
+Задание: 39 (Serge I: 2003-02-14)
+Найдите корабли, `сохранившиеся для будущих сражений`; т.е. выведенные из строя в одной битве (damaged), они участвовали в другой, произошедшей позже.
+
+Почему-то система мое решение не принимает. Если есть возможность прошу подсказать. Подсказка выдает такой текст: Следует исключить дубликаты, т.к. корабль может быть поврежден в нескольких сражениях. С distinct также не принимает решение 
+
+Решение:
+select distinct ship
+from Outcomes as o1
+     inner join
+     Battles as b1
+     on o1.battle = b1.name
+where o1.result = 'ok' 
+      and ship in (select distinct ship
+                   from Outcomes as o2
+                   inner join
+                   Battles as b2
+                   on o2.battle = b2.name and o2.result = 'damaged'
+                   where b2.date < b1.date)
+
+
 
