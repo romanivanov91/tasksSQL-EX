@@ -29,6 +29,14 @@ from   (select country, name, bore
         from outcomes as o join classes as c 
         on o.ship = c.class) as t
 group by country
+
+Задание: 33 (Serge I: 2002-11-02)
+Укажите корабли, потопленные в сражениях в Северной Атлантике (North Atlantic). Вывод: ship
+
+Решение:
+select ship
+from Outcomes
+where Outcomes.battle = 'North Atlantic' and Outcomes.result = 'sunk'
       
 Задание: 38 (Serge I: 2003-02-19)
 Найдите страны, имевшие когда-либо классы обычных боевых кораблей ('bb') и имевшие когда-либо классы крейсеров ('bc').
