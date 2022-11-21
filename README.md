@@ -174,10 +174,11 @@ where bore = '16'</p>
 <h4>Задание: 50 (Serge I: 2002-11-05)</h4>
 <p>Найдите сражения, в которых участвовали корабли класса Kongo из таблицы Ships.</p>
  
-<h4>select distinct battle
+<h4>Решение:</h4>
+<p>select distinct battle
 from Ships as s
      join
      Outcomes as o
      on s.name = o.ship
-where class = 'Kongo'</h4>
+where class = 'Kongo'</p>
 
