@@ -197,3 +197,13 @@ where country='Japan'
        and (numGuns >= '9' or numGuns is NULL)
        and (bore < '19' or bore is NULL)
        and (displacement <= '65000' or displacement is NULL)</p>
+ 
+<h4>Задание: 53 (Serge I: 2002-11-05)</h4>
+<p>Определите среднее число орудий для классов линейных кораблей.
+ Получить результат с точностью до 2-х десятичных знаков.</p>
+ 
+<h4>Решение:</h4>
+<p>select cast(round(avg(cast(numguns as numeric(4,2))),2) as numeric(4,2))
+from classes
+where type='bb'</p>
+
