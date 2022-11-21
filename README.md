@@ -224,3 +224,14 @@ from (select name, type, numGuns
       Outcomes as o
       on o.ship=c.class) as cso
 where type='bb'</p>
+ 
+<h4>Задание: 55 (Serge I: 2003-02-16)</h4>
+<p>Для каждого класса определите год, когда был спущен на воду первый корабль этого класса. Если год спуска на воду головного корабля неизвестен, определите минимальный год спуска на воду кораблей этого класса. Вывести: класс, год.</p>
+
+<h4>Решение:</h4>
+<p>select c.class, min(launched)
+from Classes as c
+     left join
+     Ships as s
+     on c.class = s.class
+group by c.class</p>
