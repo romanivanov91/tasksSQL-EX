@@ -182,3 +182,18 @@ from Ships as s
      on s.name = o.ship
 where class = 'Kongo'</p>
 
+<h4>Задание: 52 (qwrqwr: 2010-04-23)</h4>
+<p>Определить названия всех кораблей из таблицы Ships, которые могут быть линейным японским кораблем,
+имеющим число главных орудий не менее девяти, калибр орудий менее 19 дюймов и водоизмещение не более 65 тыс.тонн</p>
+ 
+ <h4>Решение:</h4>
+ <p>select distinct name
+from Classes as c
+     join
+     Ships as s
+     on c.class = s.class
+where country='Japan'
+       and type='bb'
+       and (numGuns >= '9' or numGuns is NULL)
+       and (bore < '19' or bore is NULL)
+       and (displacement <= '65000' or displacement is NULL)</p>
