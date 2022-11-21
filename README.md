@@ -207,3 +207,20 @@ where country='Japan'
 from classes
 where type='bb'</p>
 
+<h4>Задание: 54 (Serge I: 2003-02-14)</h4>
+<p>С точностью до 2-х десятичных знаков определите среднее число орудий всех линейных кораблей (учесть корабли из таблицы Outcomes).</p>
+ 
+<h4>Решение:</h4>
+<p>select cast(avg(numGuns*1.0) as numeric(6,2))
+from (select name, type, numGuns
+      from Classes as c
+      join
+      Ships as s
+      on c.class=s.class
+      union
+      select ship as name, type, numGuns
+      from Classes as c
+      join
+      Outcomes as o
+      on o.ship=c.class) as cso
+where type='bb'</p>
