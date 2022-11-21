@@ -235,3 +235,19 @@ from Classes as c
      Ships as s
      on c.class = s.class
 group by c.class</p>
+ 
+<h4>Задание: 59 (Serge I: 2003-02-15)</h4>
+<p>Посчитать остаток денежных средств на каждом пункте приема для базы данных с отчетностью не чаще одного раза в день. Вывод: пункт, остаток.</p>
+ 
+<h4>Решение</h4>
+<p>select i.point, (COALESCE (i.inc, 0) - COALESCE (o.out, 0) ) as Remain
+from (select point, sum(inc) as inc
+      from Income_o
+      group by point) as i
+      left join
+      (select point, sum(out) as out
+      from Outcome_o
+      group by point) as o
+      on i.point = o.point</p>
+ 
+
