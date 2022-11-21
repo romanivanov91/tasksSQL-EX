@@ -152,3 +152,21 @@ where c.class in (select ship
       s.name in (select ship
                   from Outcomes
   where result = 'sunk')</p>
+  
+<h4>Задание: 49 (Serge I: 2003-02-17)</h4>
+<p>Найдите названия кораблей с орудиями калибра 16 дюймов (учесть корабли из таблицы Outcomes).</p>
+
+<h4>Решение:</h4>
+<p>select name
+from (select name, bore
+      from Classes
+      right join
+      Ships
+      on Classes.class = Ships.class
+      union
+      select ship as name, bore
+      from Classes
+      right join
+      Outcomes 
+      on Outcomes.ship = Classes.class) as cso
+where bore = '16'</p>
