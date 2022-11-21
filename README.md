@@ -170,3 +170,14 @@ from (select name, bore
       Outcomes 
       on Outcomes.ship = Classes.class) as cso
 where bore = '16'</p>
+ 
+<h4>Задание: 50 (Serge I: 2002-11-05)</h4>
+<p>Найдите сражения, в которых участвовали корабли класса Kongo из таблицы Ships.</p>
+ 
+<h4>select distinct battle
+from Ships as s
+     join
+     Outcomes as o
+     on s.name = o.ship
+where class = 'Kongo'</h4>
+
