@@ -203,7 +203,7 @@ where country='Japan'
  Получить результат с точностью до 2-х десятичных знаков.</p>
  
 <h4>Решение:</h4>
-<p>select cast(round(avg(cast(numguns as numeric(4,2))),2) as numeric(4,2))
+<p>select cast(avg(numGuns*1.0) as numeric(6,2))
 from classes
 where type='bb'</p>
 
